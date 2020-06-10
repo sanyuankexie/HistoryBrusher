@@ -23,8 +23,9 @@ for name in names:
     data = data.append(temp)
 data.index = range(data.shape[0])
 scores = int(read_scores("score.txt"))
-while 1:
+while True:
     index = np.random.randint(data.shape[0])
+    data = data.sample(frac=1)
     err = 0
     q = data.iloc[index, :]
     answer = q[2]
@@ -32,7 +33,7 @@ while 1:
     print(q[0].strip() + q[1].strip())
     for i in range(3, 7):
         print(chooses[i - 3] + "、" + q[i].strip())
-    while 1:
+    while True:
         a = input("请输入你的选择：")
         if a == answer:
             print("yes!")
