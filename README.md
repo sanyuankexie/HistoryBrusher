@@ -29,11 +29,11 @@ The Brusher to practise
 
 若没有显示跳转则加一个D:
 
-![img](F:\schoolFile\学习\政治历史\近代史纲要\历史刷题工具\clip_image002.jpg)
+![img](imgs\clip_image002.jpg)
 
 输入pip install pandas -i https://pypi.douban.com/simple/
 
-![img](F:\schoolFile\学习\政治历史\近代史纲要\历史刷题工具\clip_image004.jpg)
+![img](imgs\clip_image004.jpg)
 
 开始安装pandas
 
@@ -41,7 +41,7 @@ The Brusher to practise
 
 输入 pip install numpy -i https://pypi.douban.com/simple/
 
-![img](F:\schoolFile\学习\政治历史\近代史纲要\历史刷题工具\clip_image006.jpg)
+![img](imgs\clip_image006.jpg)
 
 开始安装numpy
 
@@ -63,7 +63,7 @@ The Brusher to practise
 
 然后输入python bigin.py
 
-![img](F:\schoolFile\学习\政治历史\近代史纲要\历史刷题工具\clip_image008.jpg)
+![img](imgs\clip_image008.jpg)
 
 就可以进入我们的答题界面了
 
@@ -79,7 +79,7 @@ The Brusher to practise
 
 打开py文件所在目录,将新的题库放到我们的目录中（默认csv格式），选择bigin.py文件，右键，打开方式，选择记事本打开，在这个中括号中添加
 
-![img](F:\schoolFile\学习\政治历史\近代史纲要\历史刷题工具\clip_image010.jpg)
+![img](imgs\clip_image010.jpg)
 
 添加方式：这行最右边的中括号前输入==**文件名称**==
 
