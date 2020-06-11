@@ -45,7 +45,7 @@ while True:
     for i in range(3, 7):
         print(chooses[i - 3] + "、" + q[i].strip())
     while True:
-        a = input("请输入你的选择：")
+        a = input("请输入你的选择：").upper()  # 大小写皆可
         if a == answer:
             print("yes!")
             if is_recode:
