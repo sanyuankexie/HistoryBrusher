@@ -73,7 +73,6 @@ while True:
     while True:
         a = input("请输入你的选择：").upper()  # 大小写皆可
         if a == answer:
-            print("yes!")
             if is_recode:
                 data.iloc[index, -1] += 1
             scores += 1
