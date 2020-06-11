@@ -11,6 +11,18 @@ def read_scores(fileName):
     with open(fileName, "r", encoding="gb18030") as file:
         a = file.read()
         return a
+# 获得答案
+def get_answer(answer, choose_index):
+    result = ""
+    answer_ = {"A": 3, "B": 4, "C": 5, "D": 6}
+    ture_answer = {"0": "A", "1": "B", "2": "C", "3": "D"}
+    for i in answer:
+        index = answer_[i]
+        result += ture_answer[str(choose_index.index(index))]
+    list_result = list(result)
+    list_result.sort()
+    result = "".join(list_result)
+    return result
 
 
 # 是否记录做题次序,如果想要记录做题次序就改为True
@@ -49,8 +61,13 @@ while True:
     answer = q[2]
     print("你的分数为：", scores)
     print(q[0].strip() + q[1].strip())
-    for i in range(3, 7):
-        print(chooses[i - 3] + "、" + q[i].strip())
+    # 随机打乱选项
+    chooses_index = [3, 4, 5, 6]
+    random.shuffle(chooses_index)
+    answer = get_answer(answer, chooses_index)
+    # 加了括号
+    for i, j in zip(chooses_index, chooses):
+        print("【", j, "】" + q[i].strip())
     while True:
         a = input("请输入你的选择：").upper()  # 大小写皆可
         if a == answer:
