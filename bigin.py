@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+import os
 
 def recode_num(a, fileName):
     with open(fileName, "w", encoding="gb18030") as file:
@@ -14,7 +14,7 @@ def read_scores(fileName):
 
 
 # 是否记录做题次序,如果想要记录做题次序就改为True
-is_recode = False
+is_recode = True
 # m是做题次数，如果作对这题m次就跳过这题，默认为3（作对是指在作答6次内回答正确）
 m = 3
 chooses = ["A", "B", "C", "D"]
@@ -29,6 +29,7 @@ if is_recode:
     data["recode"] = 0
 data.index = range(data.shape[0])
 scores = int(read_scores("score.txt"))
+count = 0
 while True:
     index = np.random.randint(data.shape[0])
     # 随机打乱
@@ -60,3 +61,6 @@ while True:
                 print(answer)
                 print("\n")
                 break
+    count += 1
+    if count%3 == 0:
+        os.system('cls')
