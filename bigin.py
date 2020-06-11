@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
+import random
 import os
+
 
 def recode_num(a, fileName):
     with open(fileName, "w", encoding="gb18030") as file:
@@ -38,7 +40,7 @@ if os.path.exists("score.txt"):
 else:
     file = open("score.txt", "w")
     file.write("0")
-    scores = int(read_scores("score.txt"))
+    scores = 0
 data = pd.read_csv('test/' + names[0], header=None)
 for name in names:
     temp = pd.read_csv('test/' + name, header=None)
