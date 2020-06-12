@@ -116,11 +116,13 @@ while True:
             if err >= 4:
                 print(answer)
                 print("\n")
+                break
         k += 1
         if k >= 3 and flag == 0:
             answer_list = [q[3].strip(), q[4].strip(), q[5].strip(), q[6].strip()]
             writeInToExecl(q[0].strip(), q[1].strip(), answer, answer_list)
             flag = 1
+            
     count += 1
     if count%3 == 0:
         os.system('pause')
