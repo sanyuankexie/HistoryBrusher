@@ -103,6 +103,9 @@ while True:
     flag = 0
     while True:
         a = input("请输入你的选择：").upper()
+        a = list(a)
+        a.sort()
+        a = "".join(a)
         if a == answer:
             print("yes!")
             if is_recode:
