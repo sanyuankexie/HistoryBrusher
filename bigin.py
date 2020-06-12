@@ -13,6 +13,8 @@ def read_scores(fileName):
     with open(fileName, "r", encoding="gb18030") as file:
         a = file.read()
         return a
+
+
 # 获得答案
 def get_answer(answer, choose_index):
     result = ""
@@ -25,7 +27,8 @@ def get_answer(answer, choose_index):
     list_result.sort()
     result = "".join(list_result)
     return result
-    
+
+
 def writeInToExecl(title, theType, answer, optionList):
     theDict = {'题目': title, '类型': theType, '答案': answer, '选项A': optionList[0], '选项B': optionList[1],
                '选项C': optionList[2], '选项D': optionList[3], }
@@ -33,15 +36,28 @@ def writeInToExecl(title, theType, answer, optionList):
     df.to_csv('错题.csv', index=False, header=0, mode='a', encoding="utf_8_sig")
 
 
+def del_same(data):
+    """
+    删除相同的题目
+    :param data:题目集合
+    :return:删除后的集合
+    """
+    for question in set(data[0]):
+        index = data[data[0] == question].index[1:].tolist()
+        data.drop(index, inplace=True)
+        data.index = range(data.shape[0])
+    # data.to_csv("test/total.csv",index=False,header=None)
+
+
+
+
 # 是否记录做题次序,如果想要记录做题次序就改为True
 is_recode = True
 # m是做题次数，如果作对这题m次就跳过这题，默认为3（作对是指在作答6次内回答正确）
-m = 3
+m = 2
 chooses = ["A", "B", "C", "D"]
-names = ['近代史上篇测试1.csv', '近代史上篇测试2.csv', '近代史中篇测试2.csv', '近代史期中测试1.csv', '近代史期中测试2.csv', '近代史第一次平时练习.csv'
-    , '1920215-202001.csv', '1920215-202002.csv', '1920215-下篇1.csv', '1920215-下篇2.csv', '1920215-中篇测试1.csv',
-         '1920215-中篇测试2.csv', '1920217-期中测试1.csv', '1920217-中篇测试.csv', '1920217-上篇测试.csv']
-         
+
+
 mode = input("""
 ####################################################
                                                                 +          
@@ -55,9 +71,7 @@ mode = input("""
 """)
 
 if mode == '1':
-    names = ['近代史上篇测试1.csv', '近代史上篇测试2.csv', '近代史中篇测试2.csv', '近代史期中测试1.csv', '近代史期中测试2.csv', '近代史第一次平时练习.csv'
-        , '1920215-202001.csv', '1920215-202002.csv', '1920215-下篇1.csv', '1920215-下篇2.csv', '1920215-中篇测试1.csv',
-             '1920215-中篇测试2.csv', '1920217-期中测试1.csv']
+    names = ["total.csv"]
 elif mode == '2':
     names = ['错题.csv']
 os.system('cls')
@@ -71,12 +85,12 @@ else:
     file.write("0")
     scores = 0
 data = pd.read_csv('test/' + names[0], header=None)
-for name in names:
-    temp = pd.read_csv('test/' + name, header=None)
-    data = data.append(temp)
 if is_recode:
     data["recode"] = 0
-data.index = range(data.shape[0])
+
+# del_same(data)
+
+
 
 count = 0
 while True:
@@ -126,6 +140,7 @@ while True:
             writeInToExecl(q[0].strip(), q[1].strip(), answer, answer_list)
             flag = 1
     count += 1
-    if count%3 == 0:
-        os.system('pause')
-        os.system('cls')
+    if count % 3 == 0:
+         pass
+        #os.system('pause')
+        #os.system('cls')
