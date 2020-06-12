@@ -1,6 +1,7 @@
 # HistoryBrusher
 The Brusher to practise
 
+**题目的csv文件放到test文件下**
 
 
 # 历史题库自动随机出题
