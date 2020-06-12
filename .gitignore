@@ -142,3 +142,4 @@ cython_debug/
 log/
 *.iml
 score.txt
+错题.csv
