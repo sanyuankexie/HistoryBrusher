@@ -102,7 +102,7 @@ while True:
         k = 0
     flag = 0
     while True:
-        a = input("请输入你的选择：")
+        a = input("请输入你的选择：").upper()
         if a == answer:
             print("yes!")
             if is_recode:
