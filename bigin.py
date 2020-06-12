@@ -99,11 +99,13 @@ while True:
     # 加了括号
     for i, j in zip(chooses_index, chooses):
         print("【", j, "】" + q[i].strip())
+        k = 0
+    flag = 0
     while True:
-        a = input("请输入你的选择：").upper()  # 大小写皆可
+        a = input("请输入你的选择：")
         if a == answer:
+            print("yes!")
             if is_recode:
-                print("yes!")
                 data.iloc[index, -1] += 1
             scores += 1
             print("\n")
@@ -111,10 +113,14 @@ while True:
             break
         else:
             err += 1
-            if err > 5:
+            if err >= 4:
                 print(answer)
                 print("\n")
-                break
+        k += 1
+        if k >= 3 and flag == 0:
+            answer_list = [q[3].strip(), q[4].strip(), q[5].strip(), q[6].strip()]
+            writeInToExecl(q[0].strip(), q[1].strip(), answer, answer_list)
+            flag = 1
     count += 1
     if count%3 == 0:
         os.system('pause')
