@@ -41,7 +41,7 @@ chooses = ["A", "B", "C", "D"]
 names = ['近代史上篇测试1.csv', '近代史上篇测试2.csv', '近代史中篇测试2.csv', '近代史期中测试1.csv', '近代史期中测试2.csv', '近代史第一次平时练习.csv'
     , '1920215-202001.csv', '1920215-202002.csv', '1920215-下篇1.csv', '1920215-下篇2.csv', '1920215-中篇测试1.csv',
          '1920215-中篇测试2.csv', '1920217-期中测试1.csv', '1920217-中篇测试.csv']
-         
+#UI
 mode = input("""
 ####################################################
                                                                 +          
@@ -122,7 +122,6 @@ while True:
             answer_list = [q[3].strip(), q[4].strip(), q[5].strip(), q[6].strip()]
             writeInToExecl(q[0].strip(), q[1].strip(), answer, answer_list)
             flag = 1
-            
     count += 1
     if count%3 == 0:
         os.system('pause')
