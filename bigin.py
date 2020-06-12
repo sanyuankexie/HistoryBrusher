@@ -25,6 +25,12 @@ def get_answer(answer, choose_index):
     list_result.sort()
     result = "".join(list_result)
     return result
+    
+def writeInToExecl(title, theType, answer, optionList):
+    theDict = {'题目': title, '类型': theType, '答案': answer, '选项A': optionList[0], '选项B': optionList[1],
+               '选项C': optionList[2], '选项D': optionList[3], }
+    df = pd.DataFrame(theDict, index=[0])
+    df.to_csv('错题.csv', index=False, header=0, mode='a', encoding="utf_8_sig")
 
 
 # 是否记录做题次序,如果想要记录做题次序就改为True
@@ -35,6 +41,29 @@ chooses = ["A", "B", "C", "D"]
 names = ['近代史上篇测试1.csv', '近代史上篇测试2.csv', '近代史中篇测试2.csv', '近代史期中测试1.csv', '近代史期中测试2.csv', '近代史第一次平时练习.csv'
     , '1920215-202001.csv', '1920215-202002.csv', '1920215-下篇1.csv', '1920215-下篇2.csv', '1920215-中篇测试1.csv',
          '1920215-中篇测试2.csv', '1920217-期中测试1.csv', '1920217-中篇测试.csv']
+         
+mode = input("""
+####################################################
+                                                                +          
+        +++  欢迎来到近代史无限刷  +++                    +   ++++++                                               
+        +++  请选择模式:         +++                    +++     +            
+        +++  1. 闯关模式         +++                      +  +  +          
+        +++  2. 复习错题模式      +++                     +     +
+                                                        ++++++++++++++++                   
+####################################################
+
+""")
+
+if mode == '1':
+    names = ['近代史上篇测试1.csv', '近代史上篇测试2.csv', '近代史中篇测试2.csv', '近代史期中测试1.csv', '近代史期中测试2.csv', '近代史第一次平时练习.csv'
+        , '1920215-202001.csv', '1920215-202002.csv', '1920215-下篇1.csv', '1920215-下篇2.csv', '1920215-中篇测试1.csv',
+             '1920215-中篇测试2.csv', '1920217-期中测试1.csv']
+elif mode == '2':
+    names = ['错题.csv']
+os.system('cls')
+print("""
+        +++  开启你的刷题生涯吧！  +++
+    """)
 if os.path.exists("score.txt"):
     scores = int(read_scores("score.txt"))
 else:
