@@ -3,6 +3,11 @@ import numpy as np
 import random
 import os
 
+A_KEY = ";"
+B_KEY = "["
+C_KEY = "]"
+D_KEY = "\\"
+
 
 def recode_num(a, fileName):
     with open(fileName, "w", encoding="gb18030") as file:
@@ -130,10 +135,11 @@ while True:
     flag = 0
     while True:
         a = input("请输入你的选择：").upper()
-        a = a.replace("P", "A")
-        a = a.replace("[", "B")
-        a = a.replace("]", "C")
-        a = a.replace("\\", "D")
+        a = a.replace(A_KEY, "A")
+        a = a.replace(B_KEY, "B")
+        a = a.replace(C_KEY, "C")
+        a = a.replace(D_KEY, "D")
+        print("你输入的选择是：" + a)
         a = list(a)
         a.sort()
         a = "".join(a)
