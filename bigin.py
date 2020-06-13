@@ -130,12 +130,10 @@ while True:
     flag = 0
     while True:
         a = input("请输入你的选择：").upper()
-        a = str(a)
         a = a.replace("P", "A")
         a = a.replace("[", "B")
         a = a.replace("]", "C")
         a = a.replace("\\", "D")
-        print(a)
         a = list(a)
         a.sort()
         a = "".join(a)
