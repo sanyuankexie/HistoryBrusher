@@ -139,7 +139,7 @@ while True:
         a = a.replace(B_KEY, "B")
         a = a.replace(C_KEY, "C")
         a = a.replace(D_KEY, "D")
-        print("你输入的选择是：" + a)
+        # print("你输入的选择是：" + a)
         a = list(a)
         a.sort()
         a = "".join(a)
