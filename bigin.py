@@ -46,7 +46,7 @@ def del_same(data):
         index = data[data[0] == question].index[1:].tolist()
         data.drop(index, inplace=True)
         data.index = range(data.shape[0])
-    data.to_csv("test/total.csv",index=False,header=None,encoding="utf_8_sig")
+    data.to_csv("test/total.csv", index=False, header=None, encoding="utf_8_sig")
 
 
 def append_items(item_names, data):
@@ -59,7 +59,7 @@ def append_items(item_names, data):
     for name in item_names:
         temp = pd.read_csv("test/" + name, header=None)
         temp[data.columns[-1]] = 0
-        data = data.append(temp,ignore_index=True)
+        data = data.append(temp, ignore_index=True)
         return data
 
 
@@ -105,8 +105,6 @@ data = pd.read_csv('test/' + names[0], header=None)
 if is_recode:
     data["recode"] = 0
 
-
-
 count = 0
 while True:
     index = np.random.randint(data.shape[0])
@@ -132,6 +130,12 @@ while True:
     flag = 0
     while True:
         a = input("请输入你的选择：").upper()
+        a = str(a)
+        a = a.replace("P", "A")
+        a = a.replace("[", "B")
+        a = a.replace("]", "C")
+        a = a.replace("\\", "D")
+        print(a)
         a = list(a)
         a.sort()
         a = "".join(a)
