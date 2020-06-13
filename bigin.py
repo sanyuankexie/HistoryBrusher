@@ -46,7 +46,7 @@ def del_same(data):
         index = data[data[0] == question].index[1:].tolist()
         data.drop(index, inplace=True)
         data.index = range(data.shape[0])
-    data.to_csv("test/total.csv",index=False,header=None)
+    data.to_csv("test/total.csv",index=False,header=None,encoding="utf_8_sig")
 
 
 def append_items(item_names, data):
@@ -101,7 +101,7 @@ data = pd.read_csv('test/' + names[0], header=None)
 # data = append_items(new_items,data)
 # del_same(data)
 # data = data.iloc[:,:-2]
-# data.to_csv("test/total.csv",header=None,index=False)
+# data.to_csv("test/total.csv",header=None,index=False,encoding="utf_8_sig")
 if is_recode:
     data["recode"] = 0
 
