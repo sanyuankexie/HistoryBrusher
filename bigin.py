@@ -46,17 +46,30 @@ def del_same(data):
         index = data[data[0] == question].index[1:].tolist()
         data.drop(index, inplace=True)
         data.index = range(data.shape[0])
-    # data.to_csv("test/total.csv",index=False,header=None)
+    data.to_csv("test/total.csv",index=False,header=None)
 
 
+def append_items(item_names, data):
+    """
+    添加题目
+    :param name:文件名称列表
+    :param data:题库
+    :return:
+    """
+    for name in item_names:
+        temp = pd.read_csv("test/" + name, header=None)
+        temp[data.columns[-1]] = 0
+        data = data.append(temp,ignore_index=True)
+        return data
 
 
 # 是否记录做题次序,如果想要记录做题次序就改为True
 is_recode = True
+# 添加题库
+new_items = []
 # m是做题次数，如果作对这题m次就跳过这题，默认为3（作对是指在作答6次内回答正确）
 m = 2
 chooses = ["A", "B", "C", "D"]
-
 
 mode = input("""
 ####################################################
@@ -85,10 +98,12 @@ else:
     file.write("0")
     scores = 0
 data = pd.read_csv('test/' + names[0], header=None)
+# data = append_items(new_items,data)
+# del_same(data)
+# data = data.iloc[:,:-2]
+# data.to_csv("test/total.csv",header=None,index=False)
 if is_recode:
     data["recode"] = 0
-
-# del_same(data)
 
 
 
@@ -141,6 +156,6 @@ while True:
             flag = 1
     count += 1
     if count % 3 == 0:
-         pass
-        #os.system('pause')
-        #os.system('cls')
+        pass
+    # os.system('pause')
+    # os.system('cls')
