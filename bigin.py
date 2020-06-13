@@ -3,7 +3,7 @@ import numpy as np
 import random
 import os
 
-A_KEY = ";"
+A_KEY = "\'"
 B_KEY = "["
 C_KEY = "]"
 D_KEY = "\\"
@@ -135,6 +135,7 @@ while True:
     flag = 0
     while True:
         a = input("请输入你的选择：").upper()
+        a = a.replace(";", "A")
         a = a.replace(A_KEY, "A")
         a = a.replace(B_KEY, "B")
         a = a.replace(C_KEY, "C")
