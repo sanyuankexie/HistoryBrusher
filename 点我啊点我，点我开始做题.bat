@@ -1,3 +1,3 @@
 @echo off
 color ff
-python bigin.py
+python begin.py

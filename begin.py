@@ -73,7 +73,7 @@ is_recode = True
 # 添加题库
 new_items = ["1920217-中篇测试.csv"]
 # 清空做题次序
-is_clear = True
+is_clear = False
 # m是做题次数，如果作对这题m次就跳过这题，默认为3（作对是指在作答6次内回答正确）
 m = 2
 chooses = ["A", "B", "C", "D"]
