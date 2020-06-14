@@ -33,7 +33,7 @@ def writeInToExecl(title, theType, answer, optionList):
     theDict = {'题目': title, '类型': theType, '答案': answer, '选项A': optionList[0], '选项B': optionList[1],
                '选项C': optionList[2], '选项D': optionList[3], }
     df = pd.DataFrame(theDict, index=[0])
-    df.to_csv('错题.csv', index=False, header=0, mode='a', encoding="utf_8_sig")
+    df.to_csv('test/错题.csv', index=False, header=0, mode='a', encoding="utf_8_sig")
 
 
 def del_same(data):
@@ -66,7 +66,9 @@ def append_items(item_names, data):
 # 是否记录做题次序,如果想要记录做题次序就改为True
 is_recode = True
 # 添加题库
-new_items = []
+new_items = ["1920217-中篇测试.csv"]
+# 清空做题次序
+is_clear = False
 # m是做题次数，如果作对这题m次就跳过这题，默认为3（作对是指在作答6次内回答正确）
 m = 2
 chooses = ["A", "B", "C", "D"]
@@ -102,8 +104,10 @@ data = pd.read_csv('test/' + names[0], header=None)
 # del_same(data)
 # data = data.iloc[:,:-2]
 # data.to_csv("test/total.csv",header=None,index=False,encoding="utf_8_sig")
-if is_recode:
-    data["recode"] = 0
+if is_clear:
+    data[data.columns[-1]] = 0
+    data.to_csv("test/total.csv", header=None, index=False, encoding="utf_8_sig")
+    exit(0)
 
 
 
@@ -139,6 +143,7 @@ while True:
             print("yes!")
             if is_recode:
                 data.iloc[index, -1] += 1
+                data.to_csv("test/total.csv", header=None, index=False, encoding="utf_8_sig")
             scores += 1
             print("\n")
             recode_num(scores, "score.txt")
