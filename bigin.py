@@ -3,6 +3,11 @@ import numpy as np
 import random
 import os
 
+A_KEY = "\'"
+B_KEY = "["
+C_KEY = "]"
+D_KEY = "\\"
+
 
 def recode_num(a, fileName):
     with open(fileName, "w", encoding="gb18030") as file:
@@ -46,7 +51,7 @@ def del_same(data):
         index = data[data[0] == question].index[1:].tolist()
         data.drop(index, inplace=True)
         data.index = range(data.shape[0])
-    data.to_csv("test/total.csv",index=False,header=None,encoding="utf_8_sig")
+    data.to_csv("test/total.csv", index=False, header=None, encoding="utf_8_sig")
 
 
 def append_items(item_names, data):
@@ -59,7 +64,7 @@ def append_items(item_names, data):
     for name in item_names:
         temp = pd.read_csv("test/" + name, header=None)
         temp[data.columns[-1]] = 0
-        data = data.append(temp,ignore_index=True)
+        data = data.append(temp, ignore_index=True)
         return data
 
 
@@ -109,8 +114,6 @@ if is_clear:
     data.to_csv("test/total.csv", header=None, index=False, encoding="utf_8_sig")
     exit(0)
 
-
-
 count = 0
 while True:
     index = np.random.randint(data.shape[0])
@@ -136,6 +139,12 @@ while True:
     flag = 0
     while True:
         a = input("请输入你的选择：").upper()
+        a = a.replace(";", "A")
+        a = a.replace(A_KEY, "A")
+        a = a.replace(B_KEY, "B")
+        a = a.replace(C_KEY, "C")
+        a = a.replace(D_KEY, "D")
+        # print("你输入的选择是：" + a)
         a = list(a)
         a.sort()
         a = "".join(a)
